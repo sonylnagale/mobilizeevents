@@ -7,7 +7,30 @@ a {
   color: #00B7FF;
 }
 
+#tabs {
+  display: none;
+}
 
 ul li, #tabs div p {
   font-size: 10px;
+}
+
+#spinner {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.body {
+  margin-left: 15px;
+  display:none;
+}
+
+.event {
+  cursor: pointer;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
 }
