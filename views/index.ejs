@@ -2,8 +2,8 @@
 <html>
 <head>
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
   <h1><%= title %></h1>
@@ -12,19 +12,19 @@
     <ul>
       <li><a href="#fragment-1">All Events</a></li>
       <li><a href="#fragment-2">Events Near Me</a></li>
-      <li><a href="#fragment-3">Three</a></li>
     </ul>
     <div id="fragment-1">
       <h2>All events</h2>
 
-      <p id="spinner"><img src="/images/Spinner.svg" width="100" height="100" /></p>
+      <p class="spinner fragment-1"><img src="/images/Spinner.svg" width="100" height="100" /></p>
       <script id="all-events" type="text/x-handlebars-template">
         <div class="entry">
           {{#each events}}
-          <h3><a class="event">Event ID {{id}}: {{name}}</a></h1>
+          <h3><a class="event" name="{{id}}">Event ID {{id}}: {{name}} ({{city}}, {{state}})</a></h1>
           <div class="body">
             <p>{{description}}</p>
-            <p>{{state}}</p>
+            <p>{{address}}, {{city}} {{state}} {{zip}}</p>
+            <p><em>Hosted by: {{organizationName}}</em></p>
             <p><div id="map_{{id}}" class="map"></div>
               <!-- time to get creative with a script inside handlebars -->
               <{{!}}script>
@@ -55,10 +55,17 @@
       </script>
     </div>
     <div id="fragment-2">
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-    </div>
-    <div id="fragment-3">
-      <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+      <p>Distance from me:</p>
+      <select id="distance">
+        <option value="5">5 miles</option>
+        <option value="10">10 miles</option>
+        <option value="25">25 miles</option>
+        <option value="100">100 miles</option>
+      </select>
+
+      <p class="spinner fragment-2"><img src="/images/Spinner.svg" width="100" height="100" /></p>
+
+      <p><div id="geoMap" class="map"></div></p>
     </div>
   </div>
 
@@ -67,7 +74,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJrxMCxGyhMEM2_GiCxIyktYcUIcQjNWw">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJrxMCxGyhMEM2_GiCxIyktYcUIcQjNWw&libraries=geometry">
   </script>
   <script src="/javascripts/main.js"></script>
 

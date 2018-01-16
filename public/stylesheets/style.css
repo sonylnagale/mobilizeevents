@@ -11,11 +11,11 @@ a {
   display: none;
 }
 
-ul li, #tabs div p {
-  font-size: 10px;
+ul li, #tabs div p, .ui-widget select {
+  font-size: 12px;
 }
 
-#spinner {
+.spinner {
   width: 100px;
   height: 100px;
   margin: 0 auto;
